@@ -1,0 +1,235 @@
+/* =========================================
+   1. CONFIG & VARIABLES
+   ========================================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --maroon-primary: #800000;   /* Maroon Utama */
+    --maroon-light: #a3151f;     /* Maroon Terang (Hover) */
+    --maroon-soft: #fff0f1;      /* Pink Tipis */
+    --text-dark: #2c3e50;
+    --bg-body: #f4f6f8;
+}
+
+/* FIX PENTING: Paksa tinggi body 100% agar bisa di tengah vertikal */
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-body);
+    color: var(--text-dark);
+}
+
+/* =========================================
+   2. NAVBAR & GENERAL
+   ========================================= */
+.navbar {
+    background-color: var(--maroon-primary) !important;
+    box-shadow: 0 4px 15px rgba(128, 0, 0, 0.2);
+    padding: 15px 0;
+}
+.navbar-brand {
+    font-weight: 700;
+    color: white !important;
+    letter-spacing: 1px;
+}
+.nav-link, .navbar-text {
+    color: rgba(255,255,255,0.9) !important;
+}
+
+/* =========================================
+   3. AUTH PAGE (LOGIN & REGISTER) - FIX TENGAH
+   ========================================= */
+.auth-body {
+    background: #f4f6f8;
+    min-height: 100vh;       /* Tinggi minimal seukuran layar */
+    width: 100%;
+    display: flex;           /* Flexbox aktif */
+    align-items: center;     /* Tengahkan Vertikal (Atas-Bawah) */
+    justify-content: center; /* Tengahkan Horizontal (Kiri-Kanan) */
+    padding: 20px;
+}
+
+/* Wrapper Container Bootstrap didalam auth-body */
+.auth-body .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.auth-box {
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 50px rgba(0,0,0,0.15); /* Bayangan lebih tebal */
+    overflow: hidden;
+    width: 100%;
+    max-width: 900px;
+    display: flex;
+    min-height: 550px;
+    margin: auto; /* Penegas agar posisi di tengah */
+}
+
+/* Bagian Kiri/Gambar (Maroon) */
+.auth-left {
+    background: linear-gradient(135deg, #800000, #b30000);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 40px;
+    text-align: center;
+    position: relative;
+    width: 50%; 
+}
+
+/* Hiasan Lingkaran */
+.auth-left::before {
+    content: ''; position: absolute; top: -50px; left: -50px;
+    width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%;
+}
+.auth-left::after {
+    content: ''; position: absolute; bottom: -30px; right: -30px;
+    width: 150px; height: 150px; background: rgba(255,255,255,0.05); border-radius: 50%;
+}
+
+/* Bagian Kanan/Form (Putih) */
+.auth-right {
+    padding: 50px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    background: white;
+}
+
+/* Input Form Style */
+.form-floating .form-control {
+    border-radius: 10px;
+    border: 1px solid #eee;
+    background-color: #f9f9f9;
+}
+.form-floating .form-control:focus {
+    border-color: var(--maroon-primary);
+    background-color: white;
+    box-shadow: none;
+}
+.form-floating label {
+    color: #999;
+}
+
+/* Tombol Login/Register */
+.btn-auth {
+    background-color: var(--maroon-primary);
+    color: white;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: 600;
+    transition: 0.3s;
+    border: none;
+}
+.btn-auth:hover {
+    background-color: var(--maroon-light);
+    color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(128,0,0,0.2);
+}
+
+/* Responsif untuk HP (Layar Kecil) */
+@media (max-width: 768px) {
+    .auth-box {
+        flex-direction: column;
+        max-width: 450px;
+        min-height: auto;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+    .auth-left { display: none; }
+    .auth-right { width: 100%; padding: 40px 30px; }
+}
+
+/* =========================================
+   4. DASHBOARD WIDGETS & COMPONENTS
+   ========================================= */
+/* Widget Admin */
+.stat-card {
+    background: white;
+    border: none;
+    border-radius: 15px;
+    padding: 25px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s;
+}
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(128, 0, 0, 0.1);
+}
+.stat-card::before {
+    content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 5px;
+    background: var(--maroon-primary);
+}
+.stat-icon {
+    width: 60px; height: 60px;
+    background-color: var(--maroon-soft);
+    color: var(--maroon-primary);
+    border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.8rem; margin-right: 20px;
+}
+
+/* Widget Banner User */
+.hero-banner {
+    background: linear-gradient(135deg, #800000, #b30000);
+    border-radius: 20px;
+    padding: 60px 40px;
+    color: white;
+    box-shadow: 0 10px 30px rgba(128, 0, 0, 0.2);
+    margin-bottom: 30px;
+    position: relative;
+    overflow: hidden;
+}
+.hero-banner::before {
+    content: ''; position: absolute; top: -50px; right: -50px;
+    width: 200px; height: 200px; background: rgba(255,255,255,0.1); border-radius: 50%;
+}
+
+/* Kartu Barang User */
+.product-card {
+    border: none; border-radius: 15px; transition: all 0.3s ease;
+    background: white; overflow: hidden; height: 100%;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+.product-card:hover {
+    transform: translateY(-5px); box-shadow: 0 15px 30px rgba(128,0,0,0.15);
+}
+.product-img {
+    height: 200px; object-fit: cover; width: 100%; border-bottom: 1px solid #f0f0f0;
+}
+.badge-stok {
+    position: absolute; top: 15px; right: 15px;
+    padding: 5px 12px; border-radius: 20px; font-size: 0.8rem;
+}
+.filter-bar {
+    background: white; padding: 20px; border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03); margin-bottom: 30px;
+}
+
+/* Tabel Modern */
+.table-modern { border-collapse: separate; border-spacing: 0 12px; }
+.table-modern tbody tr { background-color: white; box-shadow: 0 3px 10px rgba(0,0,0,0.03); transition: transform 0.2s; }
+.table-modern tbody tr:hover { transform: scale(1.01); box-shadow: 0 5px 15px rgba(0,0,0,0.08); }
+.table-modern td { border: none; padding: 15px 20px; vertical-align: middle; }
+.table-modern td:first-child { border-top-left-radius: 15px; border-bottom-left-radius: 15px; }
+.table-modern td:last-child { border-top-right-radius: 15px; border-bottom-right-radius: 15px; }
+
+/* Badges Soft */
+.badge-soft-warning { background-color: #fff8e1; color: #f57c00; }
+.badge-soft-success { background-color: #e8f5e9; color: #2e7d32; }
+.badge-soft-danger  { background-color: #ffebee; color: #c62828; }
+.badge-soft-secondary { background-color: #f5f5f5; color: #616161; }
+.badge-pill-modern { padding: 8px 15px; border-radius: 30px; font-weight: 600; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px; }
